@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1085317162749",
+    "firebase_url": "https://timphongtro-6748e.firebaseio.com",
+    "project_id": "timphongtro-6748e",
+    "storage_bucket": "timphongtro-6748e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085317162749:android:1d9697cf29b0f3757b0094",
+        "android_client_info": {
+          "package_name": "com.thanh.timphongtro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085317162749-rl37jrrntjd98tjventmpjj5thk5v3u8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX8bWtGw9g_Is8NkDIjXRhBS-b4lP-Nn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085317162749-rl37jrrntjd98tjventmpjj5thk5v3u8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
