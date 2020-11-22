@@ -58,7 +58,7 @@ public class DangNhap extends Fragment {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DangNhapTK();
+                DangNhapTK(v);
             }
         });
 
@@ -70,16 +70,17 @@ public class DangNhap extends Fragment {
             }
         });
     }
-    public void DangNhapTK(){
+    public void DangNhapTK(View view){
         String email = edtTaiKhoan.getText().toString();
         String password = edtMatKhau.getText().toString();
-
+        final NavController navController = Navigation.findNavController(view);
         mAuthentication.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext() , "Đăng nhập thành công!!", Toast.LENGTH_SHORT).show();
+                            navController.navigate(R.id.action_dangNhap_to_bottom_navigation);
                         } else {
 
                             Toast.makeText(getContext() , "Tài khoản hoặc mật khẫu sai!!", Toast.LENGTH_SHORT).show();

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_dangNhap_to_dangKy"
             app:destination="@id/dangKy" />
+        <action
+            android:id="@+id/action_dangNhap_to_bottom_navigation"
+            app:destination="@id/bottom_navigation" />
     </fragment>
     <fragment
         android:id="@+id/dangKy"
@@ -23,4 +26,9 @@
             android:id="@+id/action_dangKy_to_dangNhap"
             app:destination="@id/dangNhap" />
     </fragment>
+    <activity
+        android:id="@+id/bottom_navigation"
+        android:name="com.thanh.timphongtro.Bottom_navigation"
+        android:label="activity_bottom_navigation"
+        tools:layout="@layout/activity_bottom_navigation" />
 </navigation>
