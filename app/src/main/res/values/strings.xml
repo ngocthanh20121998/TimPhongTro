@@ -8,4 +8,7 @@
     <string name="home">Home</string>
     <string name="info">Info</string>
     <string name="upload">Upload</string>
+    <string name="xoa">Xóa</string>
+    <string name="nhapdiachi">Nhập địa chỉ</string>
+    <string name="todo">TODO</string>
 </resources>

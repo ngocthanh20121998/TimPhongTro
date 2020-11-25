@@ -1,5 +1,6 @@
 package com.thanh.timphongtro;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,18 +27,6 @@ public class DangNhap extends Fragment {
     EditText edtTaiKhoan, edtMatKhau;
     FirebaseAuth mAuthentication;
 
-
-    public DangNhap() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,9 +40,9 @@ public class DangNhap extends Fragment {
 
         Button btnTaoTk = view.findViewById(R.id.buttonTaoTaiKhoan);
         mAuthentication = FirebaseAuth.getInstance();
-        btnDangNhap = view.findViewById(R.id.buttonDangNhap);
-        edtTaiKhoan = view.findViewById(R.id.editTextEmailDangNhap);
-        edtMatKhau = view.findViewById(R.id.editTextPasswordDangNhap);
+        btnDangNhap     = view.findViewById(R.id.buttonDangNhap);
+        edtTaiKhoan     = view.findViewById(R.id.editTextEmailDangNhap);
+        edtMatKhau      = view.findViewById(R.id.editTextPasswordDangNhap);
 
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +60,7 @@ public class DangNhap extends Fragment {
         });
     }
     public void DangNhapTK(View view){
-        String email = edtTaiKhoan.getText().toString();
+        final String email = edtTaiKhoan.getText().toString();
         String password = edtMatKhau.getText().toString();
         final NavController navController = Navigation.findNavController(view);
         mAuthentication.signInWithEmailAndPassword(email, password)
@@ -81,6 +70,7 @@ public class DangNhap extends Fragment {
                         if (task.isSuccessful()) {
                             Toast.makeText(getContext() , "Đăng nhập thành công!!", Toast.LENGTH_SHORT).show();
                             navController.navigate(R.id.action_dangNhap_to_bottom_navigation);
+
                         } else {
 
                             Toast.makeText(getContext() , "Tài khoản hoặc mật khẫu sai!!", Toast.LENGTH_SHORT).show();
