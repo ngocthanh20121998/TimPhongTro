@@ -101,7 +101,8 @@ public class UploadFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 final Calendar calendar = Calendar.getInstance();
-                StorageReference mountainsRef = storageRef.child("Img"+calendar.getTimeInMillis()+".png");
+                final String nameImg = "Img"+calendar.getTimeInMillis()+".png";
+                StorageReference mountainsRef = storageRef.child(nameImg);
                 imgHinh.setDrawingCacheEnabled(true);
                 imgHinh.buildDrawingCache();
                 Bitmap bitmap = ((BitmapDrawable) imgHinh.getDrawable()).getBitmap();
@@ -121,13 +122,10 @@ public class UploadFragment extends Fragment {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
 
-                        String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-
-
                         Toast.makeText(getContext(), "Luu anh Thành công", Toast.LENGTH_SHORT).show();
                         Calendar cal = Calendar.getInstance();
                         InfoPhongTro info = new InfoPhongTro(cal.getTimeInMillis(),
-                                url,
+                                nameImg,
                                 edtTieuDe.getText().toString(),
                                 edtGia.getText().toString(),
                                 edtDienTich.getText().toString(),
