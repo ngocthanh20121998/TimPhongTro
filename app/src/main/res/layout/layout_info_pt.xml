@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageViewHinh"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/todo"
+        tools:ignore="VectorDrawableCompat" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTieuDe"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="@string/tieu_de"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            tools:ignore="HardcodedText,MissingConstraints"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textViewGia"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Gia"
+                android:textAlignment="center"
+                tools:ignore="HardcodedText,MissingConstraints,NestedWeights" />
+
+            <TextView
+                android:id="@+id/textViewDienTich"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/dien_tich"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                tools:ignore="HardcodedText,MissingConstraints" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

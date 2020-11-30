@@ -10,5 +10,7 @@
     <string name="upload">Upload</string>
     <string name="xoa">Xóa</string>
     <string name="nhapdiachi">Nhập địa chỉ</string>
+    <string name="tieu_de">Tieu De</string>
     <string name="todo">TODO</string>
+    <string name="dien_tich">Dien tich</string>
 </resources>

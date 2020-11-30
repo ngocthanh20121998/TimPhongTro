@@ -8,8 +8,8 @@ public class InfoPhongTro {
     public String tieuDe;
     public String giaPhong;
     public String dienTich;
-    public String diaChi;
     public String sdt;
+    public String diaChi;
     public String moTa;
     public Date ngayDang;
 

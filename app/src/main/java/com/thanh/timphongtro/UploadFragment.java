@@ -135,7 +135,7 @@ public class UploadFragment extends Fragment {
                                 edtMoTa.getText().toString(),
                                 cal.getTime());
 
-                        mData.child(user.getUid()).push().setValue(info, new DatabaseReference.CompletionListener() {
+                        mData.child("InfoPhongTro").child(user.getUid()).push().setValue(info, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                 if(error == null){
