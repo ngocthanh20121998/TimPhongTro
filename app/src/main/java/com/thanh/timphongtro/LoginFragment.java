@@ -1,6 +1,5 @@
 package com.thanh.timphongtro;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class DangNhap extends Fragment {
+public class LoginFragment extends Fragment {
     Button btnDangNhap;
     EditText edtTaiKhoan, edtMatKhau;
     FirebaseAuth mAuthentication;
@@ -31,7 +30,7 @@ public class DangNhap extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dang_nhap, container, false);
+        return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
     @Override
@@ -60,7 +59,7 @@ public class DangNhap extends Fragment {
         });
     }
     public void DangNhapTK(View view){
-        final String email = edtTaiKhoan.getText().toString();
+        String email = edtTaiKhoan.getText().toString();
         String password = edtMatKhau.getText().toString();
         final NavController navController = Navigation.findNavController(view);
         mAuthentication.signInWithEmailAndPassword(email, password)

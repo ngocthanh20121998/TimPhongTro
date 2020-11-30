@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 
-public class DangKy extends Fragment {
+public class RegistryFragment extends Fragment {
     EditText edtEmailDangKy, edtPasswordDangKy;
     Button btnDangKy;
 
@@ -31,7 +31,7 @@ public class DangKy extends Fragment {
    // final Context context = getContext();
 
 
-    public DangKy() {
+    public RegistryFragment() {
         // Required empty public constructor
     }
 
@@ -40,7 +40,7 @@ public class DangKy extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dang_ky, container, false);
+        return inflater.inflate(R.layout.fragment_registry, container, false);
     }
 
     @Override

@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/dangNhap"
-        android:name="com.thanh.timphongtro.DangNhap"
+        android:name="com.thanh.timphongtro.LoginFragment"
         android:label="fragment_dang_nhap"
-        tools:layout="@layout/fragment_dang_nhap" >
+        tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_dangNhap_to_dangKy"
             app:destination="@id/dangKy" />
@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/dangKy"
-        android:name="com.thanh.timphongtro.DangKy"
+        android:name="com.thanh.timphongtro.RegistryFragment"
         android:label="fragment_dang_ky"
-        tools:layout="@layout/fragment_dang_ky" >
+        tools:layout="@layout/fragment_registry" >
         <action
             android:id="@+id/action_dangKy_to_dangNhap"
             app:destination="@id/dangNhap" />

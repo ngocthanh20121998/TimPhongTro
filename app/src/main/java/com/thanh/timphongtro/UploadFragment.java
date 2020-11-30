@@ -100,6 +100,7 @@ public class UploadFragment extends Fragment {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final Calendar calendar = Calendar.getInstance();
                 final String nameImg = "Img"+calendar.getTimeInMillis()+".png";
                 StorageReference mountainsRef = storageRef.child(nameImg);
@@ -122,7 +123,7 @@ public class UploadFragment extends Fragment {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
 
-                        Toast.makeText(getContext(), "Luu anh Thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Lưu ảnh Thành công", Toast.LENGTH_SHORT).show();
                         Calendar cal = Calendar.getInstance();
                         InfoPhongTro info = new InfoPhongTro(cal.getTimeInMillis(),
                                 nameImg,
@@ -138,9 +139,9 @@ public class UploadFragment extends Fragment {
                             @Override
                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                 if(error == null){
-                                    Toast.makeText(getContext(), "Luu du lieu thanh cong!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Lưu dữ liệu thành công!!", Toast.LENGTH_SHORT).show();
                                 }else {
-                                    Toast.makeText(getContext(), "That bai", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
