@@ -44,7 +44,7 @@ public class UploadFragment extends Fragment {
     ImageView imgHinh;
     int REQUEST_CODE_IMAGE = 1;
     DatabaseReference mData;
-
+    boolean checkHinh = false;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
@@ -86,6 +86,7 @@ public class UploadFragment extends Fragment {
                 edtDiaChi.setText("");
                 edtSDT.setText("");
                 edtMoTa.setText("");
+                checkHinh = false;
 
             }
         });
@@ -101,53 +102,69 @@ public class UploadFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                final Calendar calendar = Calendar.getInstance();
-                final String nameImg = "Img"+calendar.getTimeInMillis()+".png";
-                StorageReference mountainsRef = storageRef.child(nameImg);
-                imgHinh.setDrawingCacheEnabled(true);
-                imgHinh.buildDrawingCache();
-                Bitmap bitmap = ((BitmapDrawable) imgHinh.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] data = baos.toByteArray();
+                final String tieuDe = edtTieuDe.getText().toString();
+                final String gia = edtGia.getText().toString();
+                final String dientich = edtDienTich.getText().toString();
+                final String sdt =  edtSDT.getText().toString();
+                final String diaChi = edtDiaChi.getText().toString();
+                final String moTa = edtMoTa.getText().toString();
+                if(!checkHinh){
+                    Toast.makeText(getContext(), "Bạn cần chụp hình phòng trọ", Toast.LENGTH_SHORT).show();
+                } else{
+                    if(tieuDe.equals("")||gia.equals("")||dientich.equals("")||sdt.equals("")||diaChi.equals("")){
+                        Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    }else{
+                        final Calendar calendar = Calendar.getInstance();
+                        final String nameImg = "Img"+calendar.getTimeInMillis()+".png";
+                        StorageReference mountainsRef = storageRef.child(nameImg);
+                        imgHinh.setDrawingCacheEnabled(true);
+                        imgHinh.buildDrawingCache();
+                        Bitmap bitmap = ((BitmapDrawable) imgHinh.getDrawable()).getBitmap();
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                        byte[] data = baos.toByteArray();
 
-                UploadTask uploadTask = mountainsRef.putBytes(data);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        Toast.makeText(getContext(), "Lỗi", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-
-                        Toast.makeText(getContext(), "Lưu ảnh Thành công", Toast.LENGTH_SHORT).show();
-                        Calendar cal = Calendar.getInstance();
-                        InfoPhongTro info = new InfoPhongTro(cal.getTimeInMillis(),
-                                nameImg,
-                                edtTieuDe.getText().toString(),
-                                edtGia.getText().toString(),
-                                edtDienTich.getText().toString(),
-                                edtSDT.getText().toString(),
-                                edtDiaChi.getText().toString(),
-                                edtMoTa.getText().toString(),
-                                cal.getTime());
-
-                        mData.child("InfoPhongTro").child(user.getUid()).push().setValue(info, new DatabaseReference.CompletionListener() {
+                        UploadTask uploadTask = mountainsRef.putBytes(data);
+                        uploadTask.addOnFailureListener(new OnFailureListener() {
                             @Override
-                            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                if(error == null){
-                                    Toast.makeText(getContext(), "Lưu dữ liệu thành công!!", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
-                                }
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle unsuccessful uploads
+                                Toast.makeText(getContext(), "Lỗi", Toast.LENGTH_SHORT).show();
                             }
+                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+
+                                Toast.makeText(getContext(), "Lưu ảnh Thành công", Toast.LENGTH_SHORT).show();
+                                Calendar cal = Calendar.getInstance();
+                                InfoPhongTro info = new InfoPhongTro(cal.getTimeInMillis(),
+                                        nameImg,
+                                        tieuDe,
+                                        gia,
+                                        dientich,
+                                        sdt,
+                                        diaChi,
+                                        moTa,
+                                        cal.getTime());
+
+                                mData.child(user.getUid()).push().setValue(info, new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                        if(error == null){
+                                            Toast.makeText(getContext(), "Lưu dữ liệu thành công!!", Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(getContext(), "Thất bại", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
+
                         });
                     }
+                }
 
-                });
+
             }
         });
 
@@ -159,6 +176,7 @@ public class UploadFragment extends Fragment {
         if(requestCode == REQUEST_CODE_IMAGE && resultCode == RESULT_OK && data != null){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imgHinh.setImageBitmap(bitmap);
+            checkHinh = true;
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

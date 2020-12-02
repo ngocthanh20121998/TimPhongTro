@@ -61,22 +61,27 @@ public class LoginFragment extends Fragment {
     public void DangNhapTK(View view){
         String email = edtTaiKhoan.getText().toString();
         String password = edtMatKhau.getText().toString();
-        final NavController navController = Navigation.findNavController(view);
-        mAuthentication.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getContext() , "Đăng nhập thành công!!", Toast.LENGTH_SHORT).show();
-                            navController.navigate(R.id.action_dangNhap_to_bottom_navigation);
+        if(email.equals("") || password.equals("")){
+            Toast.makeText(getContext(), "Tài khoản hoặc mật khẫu trống!!", Toast.LENGTH_SHORT).show();
+        }else{
+            final NavController navController = Navigation.findNavController(view);
+            mAuthentication.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getContext() , "Đăng nhập thành công!!", Toast.LENGTH_SHORT).show();
+                                navController.navigate(R.id.action_dangNhap_to_bottom_navigation);
 
-                        } else {
+                            } else {
 
-                            Toast.makeText(getContext() , "Tài khoản hoặc mật khẫu sai!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext() , "Tài khoản hoặc mật khẫu sai!!", Toast.LENGTH_SHORT).show();
+                            }
+
+                            // ...
                         }
+                    });
+        }
 
-                        // ...
-                    }
-                });
     }
 }
