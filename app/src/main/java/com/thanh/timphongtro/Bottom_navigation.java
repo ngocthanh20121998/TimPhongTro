@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,21 +28,22 @@ public class Bottom_navigation extends AppCompatActivity {
         navigationItemView = findViewById(R.id.navigation);
         loadFragment(new HomeFragment());
         navigationItemView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
                 switch (item.getItemId()){
                     case R.id.home:
                         fragment = new HomeFragment();
-                        Toast.makeText(Bottom_navigation.this, "Home", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Bottom_navigation.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.upload:
                         fragment = new UploadFragment();
-                        Toast.makeText(Bottom_navigation.this, "Upload", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Bottom_navigation.this, "Upload", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.info:
                         fragment = new InfoFragment();
-                        Toast.makeText(Bottom_navigation.this, "Info", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Bottom_navigation.this, "Info", Toast.LENGTH_SHORT).show();
                         break;
                 }
 

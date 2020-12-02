@@ -73,17 +73,22 @@ public class RegistryFragment extends Fragment {
     private void DangKyTK(){
         String email = edtEmailDangKy.getText().toString();
         String password = edtPasswordDangKy.getText().toString();
-        mAuthentication.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getContext(), "Đăng ký thành công!!", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getContext(), "Tài khoản đã tồn tại!!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+        if(email.equals("") || password.equals("")){
+            Toast.makeText(getContext(), "Tài khoản hoặc mật khẫu trống!!", Toast.LENGTH_SHORT).show();
+        }else{
+            mAuthentication.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getContext(), "Đăng ký thành công!!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getContext(), "Tài khoản đã tồn tại!!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+
 
     }
 
