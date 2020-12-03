@@ -3,6 +3,7 @@ package com.thanh.timphongtro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
@@ -59,6 +60,21 @@ public class Bottom_navigation extends AppCompatActivity {
         return false;
     }
 
+    public void goToHomeDetailFragment(InfoPhongTro info){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
+        Bundle bundle = new Bundle();
 
+        bundle.putParcelable("key", info);
+        homeDetailFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_container,homeDetailFragment);
+        fragmentTransaction.commit();
+    }
+    public void goToHomeFragment(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HomeFragment homeFragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.fragment_container,homeFragment);
+        fragmentTransaction.commit();
+    }
 
 }

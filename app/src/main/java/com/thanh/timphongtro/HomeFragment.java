@@ -1,14 +1,19 @@
 package com.thanh.timphongtro;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -41,7 +46,25 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        final NavController nav = Navigation.findNavController(view);
+        final Bottom_navigation mainActivity = (Bottom_navigation) getActivity();
         updateListPT(view);
+
+        lvPT.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InfoPhongTro data = listPT.get(position);
+                if (mainActivity != null) {
+                    mainActivity.goToHomeDetailFragment(data);
+                }
+//                HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
+
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("key", data);
+//                homeDetailFragment.setArguments(bundle);
+//                nav.navigate(R.id.action_homeFragment_to_homeDetailFragment);
+            }
+        });
 
     }
 
