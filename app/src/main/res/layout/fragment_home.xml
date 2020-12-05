@@ -6,7 +6,8 @@
     tools:context=".HomeFragment"
     android:orientation="vertical"
     android:paddingLeft="5pt"
-    android:paddingRight="5pt">
+    android:paddingRight="5pt"
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/imageView2"

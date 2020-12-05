@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadFragment">
+    tools:context=".UploadFragment"
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/imageViewAddHinh"
@@ -115,6 +116,7 @@
 
     <Button
         android:id="@+id/buttonDelete"
+        android:background="@drawable/background_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
@@ -127,11 +129,12 @@
 
     <Button
         android:id="@+id/buttonUpload"
+        android:background="@drawable/background_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="152dp"
-        android:text="Upload"
+        android:text="Đăng"
         app:layout_constraintEnd_toStartOf="@+id/buttonDelete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextAddDiaChi"

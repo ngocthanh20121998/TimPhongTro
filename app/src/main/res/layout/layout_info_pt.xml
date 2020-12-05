@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="5dp"
+    android:background="@drawable/duongvien">
 
 
     <ImageView
@@ -11,7 +14,8 @@
         android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/todo"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        />
 
     <LinearLayout
         android:layout_width="300dp"
