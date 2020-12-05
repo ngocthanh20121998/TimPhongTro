@@ -12,9 +12,11 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="124dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:contentDescription="@string/todo"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo_phong_tro" />
 
     <ListView
         android:id="@+id/listViewPhongTro"
