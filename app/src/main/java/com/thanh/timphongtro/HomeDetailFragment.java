@@ -48,7 +48,7 @@ public class HomeDetailFragment extends Fragment {
         if(bundle!= null){
             InfoPhongTro info = bundle.getParcelable("key");
             tvTieuDe.setText(info.tieuDe);
-            tvGia.setText(String.format("%s Đồng",info.giaPhong));
+            tvGia.setText(String.format("%s đ/tháng",info.giaPhong));
             tvDienTich.setText(String.format("%s m2", info.dienTich));
             tvDiaChi.setText(info.diaChi);
             tvMoTa.setText(info.moTa);

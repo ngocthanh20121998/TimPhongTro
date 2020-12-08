@@ -65,8 +65,8 @@ public class AdapterInfoPT extends BaseAdapter {
 
         InfoPhongTro infoPhongTro = listPT.get(position);
         tvTieuDe.setText(infoPhongTro.tieuDe);
-        tvGia.setText(String.format("Giá: %s Đồng",infoPhongTro.giaPhong));
-        tvDienTich.setText(String.format("Diện tích: %s m2",infoPhongTro.dienTich));
+        tvGia.setText(String.format("%s đ/tháng",infoPhongTro.giaPhong));
+        tvDienTich.setText(String.format("%s m2",infoPhongTro.dienTich));
 
         StorageReference pathReference = storageRef.child(String.format("%s",infoPhongTro.hinh));
         final long ONE_MEGABYTE = 512 * 512;
