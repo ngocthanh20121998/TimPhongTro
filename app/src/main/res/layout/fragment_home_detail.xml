@@ -119,7 +119,7 @@
     <TextView
         android:id="@+id/textViewMoTaPhong"
         android:layout_width="210dp"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="40dp"
         android:text="TextView"
@@ -148,6 +148,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="180dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="70dp"
         android:background="@drawable/ic_baseline_sms_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,13 +162,13 @@
         android:id="@+id/buttonCall"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/ic_baseline_call_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSMS"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.474"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoTaPhong"
+        app:layout_constraintVertical_bias="0.29"
         tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
 
     <Button
@@ -175,6 +176,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="70dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

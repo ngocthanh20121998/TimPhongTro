@@ -19,6 +19,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Bottom_navigation extends AppCompatActivity {
     BottomNavigationView navigationItemView;
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +81,31 @@ public class Bottom_navigation extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container,homeFragment);
         fragmentTransaction.commit();
     }
+    public void goToInfoUser(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        InfoUserFragment infoUserFragment = new InfoUserFragment();
+        fragmentTransaction.replace(R.id.fragment_container,infoUserFragment);
+        fragmentTransaction.commit();
+    }
 
+    public void goToInfo(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        InfoFragment infoFragment = new InfoFragment();
+        fragmentTransaction.replace(R.id.fragment_container,infoFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void goToHistory(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HistoryFragment historyFragment = new HistoryFragment();
+        fragmentTransaction.replace(R.id.fragment_container,historyFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void goToUpdateInfo() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        UpdateInfoFragment updateInfoFragment = new UpdateInfoFragment();
+        fragmentTransaction.replace(R.id.fragment_container,updateInfoFragment);
+        fragmentTransaction.commit();
+    }
 }
