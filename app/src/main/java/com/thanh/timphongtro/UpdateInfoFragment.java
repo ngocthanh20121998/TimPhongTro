@@ -125,8 +125,8 @@ public class UpdateInfoFragment extends Fragment {
                                         ngaySinh,
                                         sdt,
                                         diaChi);
-
-                                mData.child("ThongTinUser").child(user.getUid()).setValue(info, new DatabaseReference.CompletionListener() {
+                                String childName = user.getUid();
+                                mData.child("ThongTinUser").child(childName).setValue(info, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                         if(error == null){
