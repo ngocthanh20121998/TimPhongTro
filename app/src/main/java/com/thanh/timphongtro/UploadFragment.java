@@ -136,8 +136,7 @@ public class UploadFragment extends Fragment {
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                                 Toast.makeText(getContext(), "Lưu ảnh Thành công", Toast.LENGTH_SHORT).show();
-                                Calendar cal = Calendar.getInstance();
-                                InfoPhongTro info = new InfoPhongTro(cal.getTimeInMillis(),
+                                InfoPhongTro info = new InfoPhongTro(calendar.getTimeInMillis(),
                                         user.getUid(),
                                         nameImg,
                                         tieuDe,
@@ -145,10 +144,9 @@ public class UploadFragment extends Fragment {
                                         dientich,
                                         sdt,
                                         diaChi,
-                                        moTa,
-                                        cal.getTime());
+                                        moTa);
 
-                                mData.child("ThongTinPhongTro").push().setValue(info, new DatabaseReference.CompletionListener() {
+                                mData.child("ThongTinPhongTro").child(""+calendar.getTimeInMillis()).setValue(info, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                         if(error == null){

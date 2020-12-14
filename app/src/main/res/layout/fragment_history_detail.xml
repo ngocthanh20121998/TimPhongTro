@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryDetailFragment">
+
+    <ImageView
+        android:id="@+id/imageViewUpdateHinh"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUpdateTieuDe"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Đặt tiêu đề"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUpdateHinh"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+
+    <EditText
+        android:id="@+id/editTextUpdateDienTich"
+        android:layout_width="118dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="52dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Diện tích(m2)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextUpdateGia"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateTieuDe"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <EditText
+        android:id="@+id/editTextUpdateGia"
+        android:layout_width="164dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="Giá (Đồng/tháng)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTextUpdateDienTich"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateTieuDe"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <EditText
+        android:id="@+id/editTextUpdateDiaChi"
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="52dp"
+        android:ems="10"
+        android:hint="@string/nhapdiachi"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateGia"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+
+    <EditText
+        android:id="@+id/editTextUpdateSDT"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Số điện thoại liên hệ"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateDiaChi"
+        android:importantForAutofill="no"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <EditText
+        android:id="@+id/editTextUpdateMoTa"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Mô Tả"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateSDT"
+        android:autofillHints=""
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <Button
+        android:id="@+id/buttonHuy"
+        android:background="@drawable/background_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="Hủy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateMoTa"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <Button
+        android:id="@+id/buttonXoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
+        android:text="Xóa"
+        app:layout_constraintEnd_toStartOf="@+id/buttonHuy"
+        app:layout_constraintStart_toEndOf="@+id/buttonCapNhat"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateMoTa"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+    <Button
+        android:id="@+id/buttonCapNhat"
+        android:background="@drawable/background_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Cập nhật"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateMoTa"
+        tools:ignore="HardcodedText,MissingConstraints,LabelFor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

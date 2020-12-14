@@ -27,6 +27,7 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:text="@string/tieu_de"
+            android:layout_marginStart="12dp"
             android:textColor="#0074D1"
             android:textSize="27sp"
             tools:ignore="HardcodedText,MissingConstraints" />

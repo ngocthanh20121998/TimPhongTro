@@ -75,6 +75,16 @@ public class Bottom_navigation extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container,homeDetailFragment);
         fragmentTransaction.commit();
     }
+    public void goToHistoryDetailFragment(InfoPhongTro info){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HistoryDetailFragment historyDetailFragment = new HistoryDetailFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putParcelable("key", info);
+        historyDetailFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_container,historyDetailFragment);
+        fragmentTransaction.commit();
+    }
     public void goToHomeFragment(){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         HomeFragment homeFragment = new HomeFragment();

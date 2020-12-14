@@ -57,12 +57,6 @@ public class HomeFragment extends Fragment {
                 if (mainActivity != null) {
                     mainActivity.goToHomeDetailFragment(data);
                 }
-//                HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
-
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelable("key", data);
-//                homeDetailFragment.setArguments(bundle);
-//                nav.navigate(R.id.action_homeFragment_to_homeDetailFragment);
             }
         });
 

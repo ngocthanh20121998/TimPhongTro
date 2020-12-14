@@ -15,12 +15,11 @@ public class InfoPhongTro implements Parcelable {
     public String sdt;
     public String diaChi;
     public String moTa;
-    public Date ngayDang;
 
     public InfoPhongTro(){
     }
 
-    public InfoPhongTro(Long id, String idUser, String hinh, String tieuDe, String giaPhong, String dienTich, String sdt, String diaChi, String moTa, Date ngayDang) {
+    public InfoPhongTro(Long id, String idUser, String hinh, String tieuDe, String giaPhong, String dienTich, String sdt, String diaChi, String moTa) {
         this.id = id;
         this.idUser = idUser;
         this.hinh = hinh;
@@ -30,7 +29,6 @@ public class InfoPhongTro implements Parcelable {
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.moTa = moTa;
-        this.ngayDang = ngayDang;
     }
 
     protected InfoPhongTro(Parcel in) {
