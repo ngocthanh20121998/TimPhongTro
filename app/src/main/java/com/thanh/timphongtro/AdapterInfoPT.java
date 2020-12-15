@@ -28,7 +28,7 @@ public class AdapterInfoPT extends BaseAdapter {
     private final int layout;
     private final ArrayList<InfoPhongTro> listPT;
     FirebaseStorage storage = FirebaseStorage.getInstance();
-
+    final StorageReference storageRef = storage.getReferenceFromUrl("gs://timphongtro-6748e.appspot.com");
 
     public AdapterInfoPT(Context context, int layout, ArrayList<InfoPhongTro> listPT) {
         this.context = context;
@@ -54,19 +54,27 @@ public class AdapterInfoPT extends BaseAdapter {
     @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final StorageReference storageRef = storage.getReferenceFromUrl("gs://timphongtro-6748e.appspot.com");
 
-        convertView = inflater.inflate(layout,null);
-        final ImageView ivHinh = convertView.findViewById(R.id.imageViewHinh);
-        TextView tvTieuDe = convertView.findViewById(R.id.textViewTieuDe);
-        TextView tvGia = convertView.findViewById(R.id.textViewGia);
-        TextView tvDienTich = convertView.findViewById(R.id.textViewDienTich);
+
+        final ViewHolder viewHolder;
+        if(convertView ==null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(layout,null);
+            viewHolder = new ViewHolder();
+            viewHolder.ivHinh = convertView.findViewById(R.id.imageViewHinh);
+            viewHolder.tvTieuDe = convertView.findViewById(R.id.textViewTieuDe);
+            viewHolder.tvGia = convertView.findViewById(R.id.textViewGia);
+            viewHolder.tvDienTich = convertView.findViewById(R.id.textViewDienTich);
+            convertView.setTag(viewHolder);
+        }
+        else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
         InfoPhongTro infoPhongTro = listPT.get(position);
-        tvTieuDe.setText(infoPhongTro.tieuDe);
-        tvGia.setText(String.format("%s đ/tháng",infoPhongTro.giaPhong));
-        tvDienTich.setText(String.format("%s m2",infoPhongTro.dienTich));
+        viewHolder.tvTieuDe.setText(infoPhongTro.tieuDe);
+        viewHolder.tvGia.setText(String.format("%s đ/tháng",infoPhongTro.giaPhong));
+        viewHolder.tvDienTich.setText(String.format("%s m2",infoPhongTro.dienTich));
 
         StorageReference pathReference = storageRef.child(String.format("%s",infoPhongTro.hinh));
         final long ONE_MEGABYTE = 512 * 512;
@@ -74,7 +82,7 @@ public class AdapterInfoPT extends BaseAdapter {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap  bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                ivHinh.setImageBitmap(bitmap);
+                viewHolder.ivHinh.setImageBitmap(bitmap);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -84,5 +92,12 @@ public class AdapterInfoPT extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    private class ViewHolder{
+        ImageView ivHinh;
+        TextView tvTieuDe;
+        TextView tvGia;
+        TextView tvDienTich;
     }
 }
