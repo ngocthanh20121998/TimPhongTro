@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -20,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -30,7 +34,7 @@ public class HistoryFragment extends Fragment {
     DatabaseReference mdata;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser user;
-
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     Button btnXoaAll, btnback;
 
     @Override
@@ -50,7 +54,11 @@ public class HistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final Bottom_navigation mainActivity = (Bottom_navigation) getActivity();
+
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://timphongtro-6748e.appspot.com");
+
         btnback = view.findViewById(R.id.buttonHistoryTroVe);
+        btnXoaAll = view.findViewById(R.id.buttonXoaTatCa);
 
         updateListHistory(view);
         lvHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +74,33 @@ public class HistoryFragment extends Fragment {
         btnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mainActivity!=null){
+                    mainActivity.goToInfo();
+                }
+            }
+        });
+        btnXoaAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (InfoPhongTro info : listHistory){
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = db.getReference("ThongTinPhongTro");
+                    myRef.child(""+info.id).removeValue();
+
+                    StorageReference desertRef = storageRef.child(""+info.hinh);
+                    desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // File deleted successfully
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Uh-oh, an error occurred!
+                        }
+                    });
+
+                }
                 if (mainActivity!=null){
                     mainActivity.goToInfo();
                 }
